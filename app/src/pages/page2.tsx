@@ -8,12 +8,16 @@ import {
   IonToolbar,
   IonIcon,
 } from "@ionic/react";
+
+interface ContainerProps {
+  id: number;
+}
 import { useParams } from "react-router";
 import "./Page.css";
 import TodoContainer from "../components/todo";
 import { arrowBack } from "ionicons/icons";
 
-const Page2: React.FC = () => {
+const Page2: React.FC<ContainerProps> = ({ id }) => {
   return (
     <IonPage>
       <IonHeader>
@@ -33,7 +37,7 @@ const Page2: React.FC = () => {
             <IonTitle size="large">Todo</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <TodoContainer />
+        <TodoContainer id={id} />
       </IonContent>
     </IonPage>
   );
