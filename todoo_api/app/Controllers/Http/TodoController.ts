@@ -7,7 +7,7 @@ export default class TodoController {
   public async index(ctx: HttpContextContract) {
     try {
       let todo = await Todo.all();
-      return { todo };
+      return todo;
     } catch {
       return { message: "Failed" };
     }

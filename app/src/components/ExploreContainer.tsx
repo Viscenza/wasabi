@@ -9,7 +9,7 @@ interface ContainerProps {
   name: string;
 }
 const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
-  const typeData = { id: 0, nom: "", user_id: 0 };
+  const typeData = { id: 0, nom: "" };
   const [data, setData] = useState([typeData]);
   if (name == "Projet") {
     let nom = useRef("");

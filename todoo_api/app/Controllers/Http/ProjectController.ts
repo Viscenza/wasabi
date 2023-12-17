@@ -7,13 +7,13 @@ export default class ProjectsController {
     try {
       let projects = await Project.all();
       const projectJson = projects.map((project) => project.serialize());
-      return { projectJson };
+      return projectJson;
     } catch {
       return { message: "Data don't found" };
     }
   }
 
-  public async create({ auth, request, response }: HttpContextContract) {
+  public async create({ request, response }: HttpContextContract) {
     const validator = new ProjectValidators();
     try {
       await request.validate({
@@ -23,8 +23,7 @@ export default class ProjectsController {
       response.badRequest("Error request is bad");
     }
     let { nom } = request.body();
-    const user = auth.user?.id;
-    const project = await Project.create({ nom: nom, user_id: user });
+    const project = await Project.create({ nom: nom });
     if (project.$isPersisted) {
       return { message: "Success" };
     } else {
