@@ -18,7 +18,7 @@ const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
     const subProject = () => {
       axios
         .post(`http://127.0.0.1:3333/`, {
-          nom: nom,
+          nom: nom.current,
         })
         .then((res) => {
           console.log(res);
@@ -34,6 +34,7 @@ const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
         .delete(`http://127.0.0.1:3333/${id}`)
         .then((res) => {
           console.log(res);
+          window.location.reload();
         })
         .catch((res) => {
           console.error(res);

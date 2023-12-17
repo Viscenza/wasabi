@@ -5,8 +5,9 @@ import TodoValidator from "App/Validators/TodoValidator";
 
 export default class TodoController {
   public async index(ctx: HttpContextContract) {
+    const id_project = ctx.request.param("id");
     try {
-      let todo = await Todo.all();
+      let todo = await Todo.findBy("project_id", id_project);
       return todo;
     } catch {
       return { message: "Failed" };

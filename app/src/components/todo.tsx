@@ -10,14 +10,15 @@ interface ContainerProps {
 }
 const TodoContainer: React.FC<ContainerProps> = ({ id }) => {
   const typeData = { id: 0, project_id: 0, content: "", stat: false };
-  const [data, setData] = useState([typeData]);
+  const [data, setData] = useState(typeData);
   const content = useRef("");
+  console.log(id);
 
   //create new project
   const subTodo = () => {
     axios
       .post(`http://127.0.0.1:3333/${id}/todo`, {
-        content: content,
+        content: content.current,
       })
       .then((res) => {
         console.log(res);
@@ -33,17 +34,19 @@ const TodoContainer: React.FC<ContainerProps> = ({ id }) => {
       .delete(`http://127.0.0.1:3333/${id}/todo/${id_todo}`)
       .then((res) => {
         console.log(res);
+        window.location.reload();
       })
       .catch((res) => {
         console.error(res);
       });
   };
 
-  // Display project
+  // Display todo
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:3333/${id}`)
+      .get(`http://127.0.0.1:3333/${id}/todo`)
       .then((res) => {
+        console.log(res.data);
         setData(res.data);
       })
       .catch((err) => {
@@ -60,12 +63,10 @@ const TodoContainer: React.FC<ContainerProps> = ({ id }) => {
         />
         <button>Ajouter</button>
       </form>
-      {data.map((item) => (
-        <div key={item.id}>
-          <p>{item.content}</p>
-          <button onClick={() => deleteData(item.id)}>fait</button>
-        </div>
-      ))}
+      <div key={data.id}>
+        <p>{data.content}</p>
+        <button onClick={() => deleteData(data.id)}>fait</button>
+      </div>
     </div>
   );
 };
