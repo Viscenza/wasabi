@@ -12,12 +12,16 @@ import {
 
 import { useLocation } from "react-router-dom";
 import {
+  calendarOutline,
+  checkbox,
   heartOutline,
   heartSharp,
+  logInOutline,
   mailOutline,
   mailSharp,
   paperPlaneOutline,
   paperPlaneSharp,
+  personOutline,
 } from "ionicons/icons";
 import "./Menu.css";
 
@@ -30,26 +34,24 @@ interface AppPage {
 
 const appPages: AppPage[] = [
   {
-    title: "Inbox",
-    url: "/folder/Inbox",
-    iosIcon: mailOutline,
-    mdIcon: mailSharp,
+    title: "Projet",
+    url: "/folder/Projet",
+    iosIcon: calendarOutline,
+    mdIcon: calendarOutline,
   },
   {
-    title: "Outbox",
-    url: "/folder/Outbox",
-    iosIcon: paperPlaneOutline,
-    mdIcon: paperPlaneSharp,
+    title: "Signup",
+    url: "/folder/Signup",
+    iosIcon: personOutline,
+    mdIcon: personOutline,
   },
   {
-    title: "Favorites",
-    url: "/folder/Favorites",
-    iosIcon: heartOutline,
-    mdIcon: heartSharp,
+    title: "Login",
+    url: "/folder/Login",
+    iosIcon: logInOutline,
+    mdIcon: logInOutline,
   },
 ];
-
-const labels = ["Family", "Friends", "Notes", "Work", "Travel", "Reminders"];
 
 const Menu: React.FC = () => {
   const location = useLocation();
@@ -58,8 +60,8 @@ const Menu: React.FC = () => {
     <IonMenu contentId="main" type="overlay">
       <IonContent>
         <IonList id="inbox-list">
-          <IonListHeader>Inbox</IonListHeader>
-          <IonNote>hi@ionicframework.com</IonNote>
+          <IonListHeader>Todo list</IonListHeader>
+          <IonNote>email</IonNote>
           {appPages.map((appPage, index) => {
             return (
               <IonMenuToggle key={index} autoHide={false}>
