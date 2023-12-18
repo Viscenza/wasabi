@@ -62,16 +62,17 @@ const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
             placeholder="Nom du projet"
             onChange={(e) => (nom.current = e.target.value)}
           />
-          <button>Ajouter</button>
+          <button id="est">Ajouter</button>
         </form>
-        <div>
+        <h4>Liste de projets</h4>
+        <div style={{ marginTop: 20 }}>
           <div id="projet">
             {data?.map((item) => (
               <div key={item.id}>
                 <IonNavLink component={() => <Page2 id={item.id} />}>
                   {item.nom}
                 </IonNavLink>
-                <button onClick={() => deleteData(item.id)}>fait</button>
+                <button onClick={() => deleteData(item.id)}>Fait</button>
               </div>
             ))}
           </div>

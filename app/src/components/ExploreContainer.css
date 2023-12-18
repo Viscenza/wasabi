@@ -3,6 +3,40 @@
   margin-top: 10%;
 }
 
+#container form {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 35px;
+}
+
+#container button {
+  background: #17a589;
+  padding: 2%;
+  border-radius: 10px;
+}
+
+#projet div {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+#todo {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+#projet button {
+  padding: 5px 10px;
+}
+
+#todo button {
+  padding: 5px 10px;
+}
+
 #container strong {
   font-size: 20px;
   line-height: 26px;

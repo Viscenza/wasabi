@@ -8,6 +8,7 @@ interface ContainerProps {
 interface ContainerProps {
   id_todo: number;
 }
+
 const TodoContainer: React.FC<ContainerProps> = ({ id }) => {
   interface typeData {
     id: number;
@@ -68,8 +69,9 @@ const TodoContainer: React.FC<ContainerProps> = ({ id }) => {
         />
         <button>Ajouter</button>
       </form>
-      <div key={data?.id}>
-        <p>{data?.content}</p>
+      <h4>Liste des taches</h4>
+      <div key={data?.id} id="todo">
+        <div>{data?.content}</div>
         <button onClick={() => deleteData(data?.id)}>fait</button>
       </div>
     </div>

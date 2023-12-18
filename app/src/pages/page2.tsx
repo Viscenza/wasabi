@@ -2,7 +2,6 @@ import {
   IonButtons,
   IonContent,
   IonHeader,
-  IonMenuButton,
   IonPage,
   IonTitle,
   IonToolbar,
@@ -12,7 +11,6 @@ import {
 interface ContainerProps {
   id: number;
 }
-import { useParams } from "react-router";
 import "./Page.css";
 import TodoContainer from "../components/todo";
 import { arrowBack } from "ionicons/icons";
