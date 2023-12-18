@@ -16,7 +16,7 @@ const TodoContainer: React.FC<ContainerProps> = ({ id }) => {
     content: string;
     stat: boolean;
   }
-  const [data, setData] = useState<typeData>();
+  const [data, setData] = useState<[typeData]>();
   const content = useRef("");
   console.log(id);
 
@@ -70,10 +70,12 @@ const TodoContainer: React.FC<ContainerProps> = ({ id }) => {
         <button>Ajouter</button>
       </form>
       <h4>Liste des taches</h4>
-      <div key={data?.id} id="todo">
-        <div>{data?.content}</div>
-        <button onClick={() => deleteData(data?.id)}>fait</button>
-      </div>
+      {data?.map((item) => (
+        <div key={item.id} id="todo">
+          <div>{item.content}</div>
+          <button onClick={() => deleteData(item.id)}>fait</button>
+        </div>
+      ))}
     </div>
   );
 };
