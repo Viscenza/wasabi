@@ -9,8 +9,13 @@ interface ContainerProps {
   id_todo: number;
 }
 const TodoContainer: React.FC<ContainerProps> = ({ id }) => {
-  const typeData = { id: 0, project_id: 0, content: "", stat: false };
-  const [data, setData] = useState(typeData);
+  interface typeData {
+    id: number;
+    project_id: number;
+    content: string;
+    stat: boolean;
+  }
+  const [data, setData] = useState<typeData>();
   const content = useRef("");
   console.log(id);
 
@@ -29,7 +34,7 @@ const TodoContainer: React.FC<ContainerProps> = ({ id }) => {
   };
 
   //Delete Todo
-  const deleteData = (id_todo: number) => {
+  const deleteData = (id_todo: number | undefined) => {
     axios
       .delete(`http://127.0.0.1:3333/${id}/todo/${id_todo}`)
       .then((res) => {
@@ -63,9 +68,9 @@ const TodoContainer: React.FC<ContainerProps> = ({ id }) => {
         />
         <button>Ajouter</button>
       </form>
-      <div key={data.id}>
-        <p>{data.content}</p>
-        <button onClick={() => deleteData(data.id)}>fait</button>
+      <div key={data?.id}>
+        <p>{data?.content}</p>
+        <button onClick={() => deleteData(data?.id)}>fait</button>
       </div>
     </div>
   );

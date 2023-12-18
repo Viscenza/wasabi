@@ -9,8 +9,11 @@ interface ContainerProps {
   name: string;
 }
 const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
-  const typeData = { id: 0, nom: "" };
-  const [data, setData] = useState([typeData]);
+  interface typeData {
+    id: number;
+    nom: string;
+  }
+  const [data, setData] = useState<[typeData]>();
   if (name == "Projet") {
     let nom = useRef("");
 
@@ -63,7 +66,7 @@ const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
         </form>
         <div>
           <div id="projet">
-            {data.map((item) => (
+            {data?.map((item) => (
               <div key={item.id}>
                 <IonNavLink component={() => <Page2 id={item.id} />}>
                   {item.nom}
